@@ -4,7 +4,7 @@ from functions import webOrchestration
 
 app = FastAPI()
 
-class Negro(BaseModel):
+class ReqData(BaseModel):
     prompt: str
 
 
@@ -13,8 +13,8 @@ def read_root():
     return {"message": "Crisp, shits workin"}
 
 @app.post("/get_code")
-def create_code(negro: Negro):
-    prompt = negro.prompt
+def create_code(reqData: ReqData):
+    prompt = reqData.prompt
     print(prompt)
     output = webOrchestration(prompt = prompt)
     return output
